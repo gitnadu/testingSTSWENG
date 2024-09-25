@@ -2,10 +2,10 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="relative flex flex-col justify-end h-screen pb-32 mx-auto bg-cover bg-center">
-      <div className="relative">
+    <div className="relative flex flex-col h-screen pb-32 mx-auto bg-cover bg-center">
+      <div className="relative h-max">
         <Image
-          className='w-full'
+          className='w-full h-[663px]'
           src="/Home/Cleaning.png"
           alt="MultiPest"
           width={1220}
