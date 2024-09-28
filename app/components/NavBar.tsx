@@ -23,8 +23,8 @@ const NavBar = () => {
           height={17.45}
         />
         </Link>
-        <Link href="/Services" className="flex items-center gap-3">
-          <div>Location</div>
+        <Link href="/client/home" className="flex items-center gap-3">
+          <div>Services</div>
           <Image className=''
           src="/NavBar/Services.png"
           alt="MultiPest"
@@ -33,7 +33,7 @@ const NavBar = () => {
         />
         </Link>
         <Link href="/Services" className="flex items-center gap-3">
-          <div>Location</div>
+          <div>Contact Us</div>
           <Image className=''
           src="/NavBar/Contact Us.png"
           alt="MultiPest"
