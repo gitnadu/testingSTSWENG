@@ -12,8 +12,9 @@ const config: Config = {
       colors: {
         'normal-green': "#86A27A",
         'dark-green': "#32472CBD",
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'dark-green-A': "#32472C",
+        'light-green': "#D1D16E",
+        'flesh': "#E6DCCD",
       },
     },
   },

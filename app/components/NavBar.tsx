@@ -13,10 +13,10 @@ const NavBar = () => {
           height={85}
         /><div className='text-white text-2xl font-semibold '>MultiPest Services</div></Link>
       </div>
-      <div className="flex items-center text-white gap-20 text-xl pr-28 h-max">
+      <div className="flex items-center text-white gap-20 text-xl pr-16 h-max">
         <Link href="/Services" className="flex items-center gap-3">
           <div>Location</div>
-          <Image className='self-end mt-5'
+          <Image className=''
           src="/NavBar/Location.png"
           alt="MultiPest"
           width={15}
@@ -25,7 +25,7 @@ const NavBar = () => {
         </Link>
         <Link href="/Services" className="flex items-center gap-3">
           <div>Location</div>
-          <Image className='self-end mt-5'
+          <Image className=''
           src="/NavBar/Services.png"
           alt="MultiPest"
           width={15}
@@ -34,7 +34,7 @@ const NavBar = () => {
         </Link>
         <Link href="/Services" className="flex items-center gap-3">
           <div>Location</div>
-          <Image className='self-end mt-5'
+          <Image className=''
           src="/NavBar/Contact Us.png"
           alt="MultiPest"
           width={15}

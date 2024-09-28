@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "./components/NavBar";
 
@@ -15,9 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-white min-h-screen">
         <NavBar />
-          <main className="flex-grow bg-white">
+          <main className="flex-grow">
             {children}
           </main>
       </body>

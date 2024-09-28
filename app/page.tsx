@@ -1,23 +1,34 @@
-import Image from "next/image";
+import React from "react";
 
 export default function Home() {
   return (
-    <div className="relative flex flex-col h-screen pb-32 mx-auto bg-cover bg-center">
-      <div className="relative h-max">
-        <Image
-          className='w-full h-[663px]'
-          src="/Home/Cleaning.png"
-          alt="MultiPest"
-          width={1220}
-          height={663}
-        />
-        <div className="absolute inset-0 bg-dark-green bg-opacity-50 flex flex-col items-center justify-center">
-          <h1 className="text-white text-[96px] font-bold mb-4 italic text-center">Keep Your Home<br></br> Safe</h1>
-          <div className="flex space-x-4 text-xl">
-            <button className="btn bg-normal-green hover:bg-dark-green text-white h-[56px] w-[202px] rounded border-none">BOOK NOW</button>
-            <button className="btn btn-outline border-normal-green hover:border-dark-green hover:bg-transparent hover:text-white text-white h-[56px] w-[202px] rounded">CONTACT US</button>
+    <div className="flex justify-center mt-14">
+
+      <div className="p-10 bg-normal-green rounded-lg shadow-lg w-[758px] h-[561px] px-20">
+        <h2 className="mb-14 mt-2 text-4xl font-bold text-center text-white">
+          Welcome!
+        </h2>
+        <form className="text-xl relative h-full">
+          <div className="mb-8">
+            <label className="block mb-2 text-white">Username</label>
+            <input
+              type="text"
+              className="w-full p-2 text-white bg-transparent placeholder-gray-300 rounded outline-none focus:ring-2 border-white border-[1px] h-[56px]"
+              placeholder="Enter your username"/>
           </div>
-        </div>
+          <div className="mb-6">
+            <label className="block mb-2 text-white">Password</label>
+            <input
+              type="password"
+              className="w-full p-2 text-white placeholder-gray-300 bg-transparent rounded outline-none focus:ring-2 border-[1px] border-white h-[56px]"
+              placeholder="Enter your password"/>
+          </div>
+          <button
+            type="submit"
+            className="w-[169px] h-[34px] text-center text-white font-bold bg-light-green text-xl rounded-xl hover:bg-[#c4b25a] transition absolute bottom-28 right-0">
+            LOG IN
+          </button>
+        </form>
       </div>
     </div>
   );
