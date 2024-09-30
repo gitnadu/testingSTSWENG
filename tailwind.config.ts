@@ -15,6 +15,7 @@ const config: Config = {
         'dark-green-A': "#32472C",
         'light-green': "#D1D16E",
         'flesh': "#E6DCCD",
+        'off-white': "#F9F5F0",
       },
     },
   },
