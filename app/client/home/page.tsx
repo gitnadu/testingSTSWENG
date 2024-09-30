@@ -1,6 +1,7 @@
 'use client'
 import OurServices from "@/app/components/home/services";
 import Drivers from "@/app/components/home/drivers";
+import Touch from "@/app/components/home/touch";
 import Image from "next/image";
 
 import 'swiper/css';
@@ -31,6 +32,7 @@ export default function Home() {
 
       <div className="w-full bg-normal-green">
           <Drivers />
+          <Touch />
         </div>
 
     </div>
