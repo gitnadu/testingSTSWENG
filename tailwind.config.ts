@@ -1,3 +1,4 @@
+import daisyui from "daisyui";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -9,11 +10,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'normal-green': "#86A27A",
+        'dark-green': "#32472CBD",
+        'dark-green-A': "#32472C",
+        'light-green': "#D1D16E",
+        'flesh': "#E6DCCD",
+        'off-white': "#F9F5F0",
+        'dark-green-B': "#5E8453FC",
       },
     },
   },
-  plugins: [],
+  plugins: [daisyui],
 };
 export default config;
