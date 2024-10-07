@@ -9,12 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "daisyui": "^4.12.10",
+    "mongoose": "^8.7.0",
     "next": "14.2.11",
+    "next-auth": "^4.24.8",
     "react": "^18",
-    "react-dom": "^18",
-    "stsweng": "file:",
-    "swiper": "^11.1.14"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",
