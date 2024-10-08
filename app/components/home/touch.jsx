@@ -87,7 +87,8 @@ export default function Touch() {
         <div className="flex justify-end">
         <button type="button" class="text-white bg-dark-green-B shadow-lg 
         ring-1 ring-inset ring-light-green w-1/4
-        focus:ring-2 font-medium rounded-lg text-sm px-5 py-2.5">Submit</button>
+        focus:ring-2 font-medium rounded-lg text-sm px-5 py-2.5
+        hover:bg-light-green hover:text-dark-green-B transition duration-300 ease-in-out">Submit</button>
         </div>
 
         </div>        
