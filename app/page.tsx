@@ -66,6 +66,7 @@ export default function Home() {
             </div>
           )}
           <button
+            data-test="submit-button"
             type="submit"
             className="w-[169px] h-[34px] text-center text-white font-bold bg-light-green text-xl rounded-xl hover:bg-[#c4b25a] transition absolute bottom-28 right-0">
             LOG IN
