@@ -8,7 +8,7 @@ export default function Touch() {
       <div className="flex flex-row">
 
         <div className="basis-3/12 text-off-white w-full px-8">
-          <p className="text-xl text-justify">Have a suggestion, feedback, or question for us? We're always eager to improve and value your input! Whether you're sharing your thoughts, asking for help, or just want to connect, feel free to reach out.</p>
+          <p className="text-xl text-justify">Have a suggestion, feedback, or question for us? We&apos;re always eager to improve and value your input! Whether you&apos;re sharing your thoughts, asking for help, or just want to connect, feel free to reach out.</p>
           <hr className="my-10" />
 
           <div className="flex flex-row gap-x-8 mb-8">
