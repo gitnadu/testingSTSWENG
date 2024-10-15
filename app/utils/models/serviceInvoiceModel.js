@@ -17,7 +17,7 @@ const serviceInvoiceModel = new Schema({
   },
 });
 
-const Service =
+const ServiceInvoice =
   models.ServiceInvoice ||
   model("ServiceInvoice", serviceInvoiceModel, "service_invoices");
-export default Service;
+export default ServiceInvoice;

@@ -12,6 +12,6 @@ const proposalSchema = new Schema({
   file: { required: false, default: null }, //type not specified for now.
 });
 
-const Service =
+const Proposal =
   models.Proposal || model("Proposal", proposalSchema, "proposals");
-export default Service;
+export default Proposal;
