@@ -15,7 +15,7 @@ const contractModel = new Schema({
   end_date: { type: Date, required: true },
   quotation_total: { type: Number, required: true },
   frequency: { type: String, required: true },
-  file: { required: false, default: null }, //type not specified for now.
+  file: { type: String, required: false, default: null }, //type not specified for now.
 });
 
 const Contract =
