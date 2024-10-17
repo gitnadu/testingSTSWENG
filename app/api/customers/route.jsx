@@ -7,13 +7,25 @@ export async function GET(request) {
         const { searchParams } = new URL(request.url)
 
         //If a url parameter is null, it is converted into undefined. Null value is a falsey value.
-        const name = searchParams.get("name") ? searchParams.get("name") : undefined;
-        const type = searchParams.get("type") ? searchParams.get("type") : undefined;
-        const status = searchParams.get("status") ? searchParams.get("status") : undefined;
-        const date = searchParams.get("date") ? searchParams.get("date") : undefined;
+        const name = searchParams.get("name");
+        const type = searchParams.get("type");
+        const status = searchParams.get("status");
+
+        //Columns of Date type is not in the Customer schema. Why is the date filter used?
+        const dateStr = searchParams.get("date") ? searchParams.get("date") : null;
+        const date = dateStr ? new Date(dateStr) : null; 
+
+        //create filter query.
+        const query = {};
+        if (name) query.name = {
+            $regex: new RegExp(name, "i")
+        };
+        if (type) query.type = type;
+        if (status) query.status = status;
+        if (date) query.date = date;
 
         await connectDB();
-        const results = await Customer.find({}).exec();
+        const results = await Customer.find(query).exec();
         console.log(name, type, status, date);
         console.log(results)
 
