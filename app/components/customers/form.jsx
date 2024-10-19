@@ -146,32 +146,32 @@ function SubmitButton({ onClick }) {
 
 export default function CustomerForm(/*props*/) {
     //States store inputs.
-    const [clientName, setClientName] = useState("");
-    const [contactPerson, setContactPerson] = useState("");
-    const [emailAddress, setEmailAddress] = useState("");
-    const [address, setAddress] = useState("");
-    const [services, setServices] = useState([]);
-    const [status, setStatus] = useState("");
-    const [type, setType] = useState("");
-    const [contactNumber, setContactNumber] = useState("");
+    const [clientNameObj, setClientName] = useState({value: "", error: false});
+    const [contactPersonObj, setContactPerson] = useState({value: "", error: false});
+    const [emailAddressObj, setEmailAddress] = useState({value: "", error: false});
+    const [addressObj, setAddress] = useState({value: "", error: false});
+    const [servicesObj, setServices] = useState({value: [], error: false});
+    const [statusObj, setStatus] = useState({value: "", error: false});
+    const [typeObj, setType] = useState({value: "", error: false});
+    const [contactNumberObj, setContactNumber] = useState({value: "", error: false});
 
     const statusOptions = ["Completed", "Ongoing", "Terminated", "Pending"];
     const typeOptions = ["Industrial", "Residential", "Commercial", "Service", "Retail", "Other"];
     const serviceOptions = ["Hygenic Pest Control", "Termite Control", "Rodent Control"]
 
     const printInputs = () => {
-        console.log(clientName);
-        console.log(contactPerson);
-        console.log(emailAddress);
-        console.log(address);
-        //console.log(services);
-        console.log(status);
-        console.log(type);
-        console.log(contactNumber);
+        console.log(clientNameObj);
+        console.log(contactPersonObj);
+        console.log(emailAddressObj);
+        console.log(addressObj);
+        //console.log(servicesObj);
+        console.log(statusObj);
+        console.log(typeObj);
+        console.log(contactNumberObj);
     };
 
     return (
-        <form className="flex flex-col p-5">
+        <div className="flex flex-col p-5">
             <h2 className="text-dark-green-A text-[20px] font-bold mb-1">Customer Information</h2>
             <div className="border-2 flex flex-row">
                 <div className="border-2 mx-2 flex flex-col "> {/* column 1 */}
@@ -188,6 +188,6 @@ export default function CustomerForm(/*props*/) {
                     <SubmitButton onClick={printInputs}/>
                 </div>
             </div>
-        </form>
+        </div>
     );
 }
