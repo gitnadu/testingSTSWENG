@@ -6,6 +6,7 @@ function TextInput({name, label}) {
                 {label}
             </label>
             <input type="text" id={name} name={name} 
+            data-test={`input_${name}`}
             className="border-[1px] border-dark-green rounded-md"/>
         </div>
     );
@@ -18,7 +19,8 @@ function EmailInput({name, label}) {
             className="text-dark-green">
                 {label}
             </label>
-            <input type="email" id={name} name={name} 
+            <input type="email" id={name} name={name}
+            data-test={`input_${name}`} 
             className="border-[1px] border-dark-green rounded-md"/>
         </div>
     );
@@ -30,6 +32,7 @@ function TelNumInput({name, label, regex}) {
             <label for={name}
             className="text-dark-green">{label}</label>
             <input type="tel" id={name} name={label} pattern={regex} 
+            data-test={`input_${name}`}
             className="border-[1px] border-dark-green rounded-md" /> {/* Using the landline and cellphone PH phone number format. */}
         </div>
     );
@@ -43,6 +46,7 @@ function CheckboxInput({name, label, options}) {
             id={`${name}-${option}`} // Unique ID for each checkbox
             name={name} // Consistent name for form submission
             value={option}
+            data-test={`input_${name}_${option}`}
             className="mx-2 my-1"
           />
           <label key={`${index}-label`} for={`${name}-${option}`}
@@ -76,6 +80,7 @@ function DropDownInput({name, label, options}) {
             </label> 
             <br />
             <select name={name} id={name}
+            data-test={`input_${name}`}
             className="border-[1px] border-dark-green rounded-md">
                 {optionList}
             </select>
@@ -85,7 +90,8 @@ function DropDownInput({name, label, options}) {
 
 function SubmitButton() {
     return (
-        <input type="submit" value="+ Add Client" disabled={true} 
+        <input type="submit" value="+ Add Client" disabled={true}
+        data-test="submit_button" 
         className="text-white text-center bg-lime-500 border-[1px] rounded-md px-2 py-1 w-max self-end mt-[45%] mr-2"/> //Disabled.
     );
 }
