@@ -69,7 +69,7 @@ function CheckboxInput({name, label, options}) {
             id={`${name}-${option}`} // Unique ID for each checkbox
             name={name} // Consistent name for form submission
             value={option}
-            data-test={`input_${name}_${option}`}
+            data-test={`input_${name}_${option.replaceAll(" ", "_").toLowerCase()}`}
             /*className="mx-2 my-1 
             peer relative appearance-none 
             w-5 h-5 border 
