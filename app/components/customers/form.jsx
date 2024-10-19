@@ -1,44 +1,57 @@
 function TextInput({name, label}) {
+    const error = true;
+    const error_style = "border-red-600 bg-red-100";
+
     return (
         <div className="my-1">
             <label for={name} 
-            className="text-dark-green">
+            className="text-dark-green-A">
                 {label}
             </label>
             <input type="text" id={name} name={name} 
             data-test={`input_${name}`}
-            className="border-[1px] border-dark-green rounded-md"/>
+            className={`border-[1px] ${error && error_style} border-dark-green rounded-md`}
+            />
         </div>
     );
 }
 
 function EmailInput({name, label}) {
+    const error = true;
+    const error_style = "border-red-600 bg-red-100";
+
     return (
         <div className="my-1">
             <label for={name}
-            className="text-dark-green">
+            className="text-dark-green-A">
                 {label}
             </label>
             <input type="email" id={name} name={name}
             data-test={`input_${name}`} 
-            className="border-[1px] border-dark-green rounded-md"/>
+            className={`border-[1px] ${error && error_style} border-dark-green rounded-md`}/>
         </div>
     );
 }
 
 function TelNumInput({name, label, regex}) {
+    const error = true;
+    const error_style = "border-red-600 bg-red-100";
+
     return (
         <div className="my-1">
             <label for={name}
-            className="text-dark-green">{label}</label>
+            className="text-dark-green-A">{label}</label>
             <input type="tel" id={name} name={label} pattern={regex} 
             data-test={`input_${name}`}
-            className="border-[1px] border-dark-green rounded-md" /> {/* Using the landline and cellphone PH phone number format. */}
+            className={`border-[1px] ${error && error_style} border-dark-green rounded-md`} /> {/* Using the landline and cellphone PH phone number format. */}
         </div>
     );
 }
 
 function CheckboxInput({name, label, options}) {
+    const error = true;
+    const error_style = "";
+
     const optionList = options.map((option, index) => (
         <div key={index} className="flex flex-row self-center">
           <input
@@ -47,10 +60,10 @@ function CheckboxInput({name, label, options}) {
             name={name} // Consistent name for form submission
             value={option}
             data-test={`input_${name}_${option}`}
-            className="mx-2 my-1"
+            className="mx-2 my-1 accent-dark-green-A"
           />
           <label key={`${index}-label`} for={`${name}-${option}`}
-          className="text-dark-green">
+          className="text-dark-green-A">
             {option}
           </label>
         </div>
@@ -59,7 +72,7 @@ function CheckboxInput({name, label, options}) {
     return (
         <div className="my-1">
             <p id={name}
-            className="text-dark-green">
+            className="text-dark-green-A">
                 {label}
             </p>
             {optionList}
@@ -68,20 +81,24 @@ function CheckboxInput({name, label, options}) {
 }
 
 function DropDownInput({name, label, options}) {
+    const error = true;
+    const error_style = "border-red-600 bg-red-100";
+
     const optionList = options.map((option, index) =>
-        <option key={index} value={option}>{option}</option>
+        <option key={index + 1} value={option}>{option}</option>
     );
 
     return (
         <div className="my-1">
             <label for={name}
-            className="text-dark-green">
+            className="text-dark-green-A">
                 {label}
             </label> 
             <br />
             <select name={name} id={name}
             data-test={`input_${name}`}
-            className="border-[1px] border-dark-green rounded-md">
+            className={`border-[1px] ${error && error_style} border-dark-green rounded-md`}>
+                 <option disabled selected value>Select {name}</option>
                 {optionList}
             </select>
         </div>
@@ -103,7 +120,7 @@ export default function CustomerForm(/*props*/) {
 
     return (
         <form className="flex flex-col p-5">
-            <h2 className="text-dark-green text-[20px] font-bold mb-1">Customer Information</h2>
+            <h2 className="text-dark-green-A text-[20px] font-bold mb-1">Customer Information</h2>
             <div className="border-2 flex flex-row">
                 <div className="border-2 mx-2 flex flex-col "> {/* column 1 */}
                     <TextInput name="client_name" label="Client Name" />
