@@ -1,5 +1,7 @@
-function TextInput({name, label}) {
-    const error = true;
+import { useState } from "react";
+
+function TextInput({name, label, onChange}) {
+    const error = false;
     const error_style = "border-red-600 bg-red-100";
 
     return (
@@ -10,14 +12,15 @@ function TextInput({name, label}) {
             </label>
             <input type="text" id={name} name={name} 
             data-test={`input_${name}`}
+            onChange={onChange}
             className={`border-[1px] ${error && error_style} border-dark-green rounded-md`}
             />
         </div>
     );
 }
 
-function EmailInput({name, label}) {
-    const error = true;
+function EmailInput({name, label, onChange}) {
+    const error = false;
     const error_style = "border-red-600 bg-red-100";
 
     return (
@@ -27,14 +30,15 @@ function EmailInput({name, label}) {
                 {label}
             </label>
             <input type="email" id={name} name={name}
-            data-test={`input_${name}`} 
+            data-test={`input_${name}`}
+            onChange={onChange} 
             className={`border-[1px] ${error && error_style} border-dark-green rounded-md`}/>
         </div>
     );
 }
 
-function TelNumInput({name, label, regex}) {
-    const error = true;
+function TelNumInput({name, label, regex, onChange}) {
+    const error = false;
     const error_style = "border-red-600 bg-red-100";
 
     return (
@@ -43,13 +47,14 @@ function TelNumInput({name, label, regex}) {
             className="text-dark-green-A">{label}</label>
             <input type="tel" id={name} name={label} pattern={regex} 
             data-test={`input_${name}`}
+            onChange={onChange}
             className={`border-[1px] ${error && error_style} border-dark-green rounded-md`} /> {/* Using the landline and cellphone PH phone number format. */}
         </div>
     );
 }
 
 function CheckboxInput({name, label, options}) {
-    const error = true;
+    const error = false;
     const error_style = "border-red-600 bg-red-100 hover:bg-red-50";
 
     const optionList = options.map((option, index) => (
@@ -78,8 +83,6 @@ function CheckboxInput({name, label, options}) {
             error &&
             error_style
             }
-            border-red-600 bg-red-100
-            hover:bg-red-50
             border-dark-green-A
             hover:bg-slate-100
             focus:ring-0 focus:ring-offset-0
@@ -106,8 +109,8 @@ function CheckboxInput({name, label, options}) {
     );
 }
 
-function DropDownInput({name, label, options}) {
-    const error = true;
+function DropDownInput({name, label, options, onChange}) {
+    const error = false;
     const error_style = "border-red-600 bg-red-100";
 
     const optionList = options.map((option, index) =>
@@ -123,6 +126,7 @@ function DropDownInput({name, label, options}) {
             <br />
             <select name={name} id={name}
             data-test={`input_${name}`}
+            onChange={onChange}
             className={`border-[1px] ${error && error_style} border-dark-green rounded-md`}>
                  <option disabled selected value>Select {name}</option>
                 {optionList}
@@ -131,18 +135,40 @@ function DropDownInput({name, label, options}) {
     );
 }
 
-function SubmitButton() {
+function SubmitButton({ onClick }) {
     return (
-        <input type="submit" value="+ Add Client" disabled={true}
+        <input type="submit" value="+ Add Client" disabled={false}
         data-test="submit_button" 
+        onClick={onClick}
         className="text-white text-center bg-lime-500 border-[1px] rounded-md px-2 py-1 w-max self-end mt-[68%] mr-2"/> //Disabled.
     );
 }
 
 export default function CustomerForm(/*props*/) {
+    //States store inputs.
+    const [clientName, setClientName] = useState("");
+    const [contactPerson, setContactPerson] = useState("");
+    const [emailAddress, setEmailAddress] = useState("");
+    const [address, setAddress] = useState("");
+    const [services, setServices] = useState([]);
+    const [status, setStatus] = useState("");
+    const [type, setType] = useState("");
+    const [contactNumber, setContactNumber] = useState("");
+
     const statusOptions = ["Completed", "Ongoing", "Terminated", "Pending"];
     const typeOptions = ["Industrial", "Residential", "Commercial", "Service", "Retail", "Other"];
     const serviceOptions = ["Hygenic Pest Control", "Termite Control", "Rodent Control"]
+
+    const printInputs = () => {
+        console.log(clientName);
+        console.log(contactPerson);
+        console.log(emailAddress);
+        console.log(address);
+        //console.log(services);
+        console.log(status);
+        console.log(type);
+        console.log(contactNumber);
+    };
 
     return (
         <form className="flex flex-col p-5">
@@ -159,7 +185,7 @@ export default function CustomerForm(/*props*/) {
                     <DropDownInput name="status" label="Status" options={statusOptions}/>
                     <DropDownInput name="type" label="Type" options={typeOptions} />
                     <TelNumInput name="contact_number" label="Contact Number" regex="^(09|\+639)\d{9}$|^(02|\+6302)\d{8}$" />
-                    <SubmitButton />
+                    <SubmitButton onClick={printInputs}/>
                 </div>
             </div>
         </form>
