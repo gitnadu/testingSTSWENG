@@ -50,7 +50,7 @@ function TelNumInput({name, label, regex}) {
 
 function CheckboxInput({name, label, options}) {
     const error = true;
-    const error_style = "";
+    const error_style = "border-red-600 bg-red-100 hover:bg-red-50";
 
     const optionList = options.map((option, index) => (
         <div key={index} className="flex flex-row self-center">
@@ -72,15 +72,21 @@ function CheckboxInput({name, label, options}) {
             cursor-pointer  
             checked:bg-lime-500 
             checked:border-lime-500"*/
-            className="form-checkbox mx-2 my-1 w-4 h-4
+            className={`form-checkbox mx-2 my-1 w-4 h-4
             cursor-pointer 
-            border-3 border-dark-green-A rounded-sm
+            border-3 rounded-sm ${
+            error &&
+            error_style
+            }
+            border-red-600 bg-red-100
+            hover:bg-red-50
+            border-dark-green-A
             hover:bg-slate-100
             focus:ring-0 focus:ring-offset-0
             checked:focus:bg-lime-500 
             checked:bg-lime-500 
             checked:border-lime-500
-            checked:hover:bg-lime-400"
+            checked:hover:bg-lime-400`}
             />
             <label key={`${index}-label`} for={`${name}-${option}`}
             className="text-dark-green-A">
