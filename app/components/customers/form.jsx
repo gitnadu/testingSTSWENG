@@ -93,33 +93,49 @@ export default function CustomerForm(/*props*/) {
             contact_number: "",
         };
 
+        let valid = true;
+
         const email_regex = /^\S+@\S+\.\S+$/
         if (!email_regex.test(formData.email_address)) {
-            console.log(`email_address: Please follow the proper email address format.`)
-            new_errors.email_address = "Please follow the proper email address format.";
+            console.log(`email_address: Please enter a properly formatted email address.`)
+            new_errors.email_address = "Please enter a properly formatted email address.";
+            valid = false;
         }
 
         const telephone_regex = /^(09|\+639)\d{9}$|^(02|\+6302)\d{8}$/;
         if (!telephone_regex.test(formData.contact_number)) {
             console.log(`contact_number: Please follow the following formats.`)
-            new_errors.contact_number = "Please follow the following formats.";
+            new_errors.contact_number = 
+            `Please follow one of the following formats:
+            09XXXXXXXXX,
+            +639XXXXXXXXX,
+            02XXXXXXXX,
+            +6302XXXXXXXX`;
+            valid = false;
         }
 
         //Handles requirements:
         for (let data in formData) {
             if (data !== "services" && formData[data] === "")  {
-                console.log(`${data}: Please fill out this field.`);
-                new_errors[data] = "Please fill out this field.";
+                console.log(`${data}: Please enter this field.`);
+                new_errors[data] = "Please enter this field.";
+                valid = false;
             }
         }
 
         if (formData.services.length <= 0) {
-            console.log(`services: Please fill out this field.`);
-            new_errors.services = "Please fill out this field.";
+            console.log(`services: Please enter this field.`);
+            new_errors.services = "Please enter this field.";
+            valid = false;
         }
 
         //console.log(new_errors);
         setErrors(new_errors);
+
+        if (valid) {
+            //API
+            //Changing the form.
+        }
     }
 
     return (

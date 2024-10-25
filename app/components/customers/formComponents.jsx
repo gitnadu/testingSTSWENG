@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 function ErrorMessage({message}) {
     return (
-        <p className="text-red-600 text-[85%] mt-1">{message}</p>
+        <p className="text-red-600 text-[85%] whitespace-pre-wrap mt-1">{message}</p>
     );
 }
 
