@@ -1,8 +1,16 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 
+function ErrorMessage({message}) {
+    return (
+        <p className="text-red-600 text-[85%] mt-1">{message}</p>
+    );
+}
+
 function TextInput({name, label, onChange}) {
-    const error = false;
+    const error = true;
     const error_style = "border-red-600 bg-red-100";
+    const error_message = "Please fill out this field.";
 
     return (
         <div className="my-1.5">
@@ -15,13 +23,16 @@ function TextInput({name, label, onChange}) {
             onChange={onChange}
             className={`border-[1px] ${error && error_style} border-dark-green rounded-md`}
             />
+            {error &&
+            <ErrorMessage message={error_message} />}
         </div>
     );
 }
 
 function EmailInput({name, label, onChange}) {
-    const error = false;
+    const error = true;
     const error_style = "border-red-600 bg-red-100";
+    const error_message = "Please fill out this field.";
 
     return (
         <div className="my-1.5">
@@ -33,13 +44,16 @@ function EmailInput({name, label, onChange}) {
             data-test={`input_${name}`}
             onChange={onChange} 
             className={`border-[1px] ${error && error_style} border-dark-green rounded-md`}/>
+            {error &&
+            <ErrorMessage message={error_message} />}
         </div>
     );
 }
 
 function TelNumInput({name, label, regex, onChange}) {
-    const error = false;
+    const error = true;
     const error_style = "border-red-600 bg-red-100";
+    const error_message = "Please fill out this field.";
 
     return (
         <div className="my-1.5">
@@ -49,13 +63,16 @@ function TelNumInput({name, label, regex, onChange}) {
             data-test={`input_${name}`}
             onChange={onChange}
             className={`border-[1px] ${error && error_style} border-dark-green rounded-md`} /> {/* Using the landline and cellphone PH phone number format. */}
+            {error &&
+            <ErrorMessage message={error_message} />}
         </div>
     );
 }
 
 function CheckboxInput({name, label, options}) {
-    const error = false;
+    const error = true;
     const error_style = "border-red-600 bg-red-100 hover:bg-red-50";
+    const error_message = "Please fill out this field.";
 
     const optionList = options.map((option, index) => (
         <div key={index} className="flex flex-row self-center">
@@ -105,13 +122,16 @@ function CheckboxInput({name, label, options}) {
                 {label}
             </p>
             {optionList}
+            {error &&
+            <ErrorMessage message={error_message} />}
         </div>
     );
 }
 
 function DropDownInput({name, label, options, onChange}) {
-    const error = false;
+    const error = true;
     const error_style = "border-red-600 bg-red-100";
+    const error_message = "Please fill out this field.";
 
     const optionList = options.map((option, index) =>
         <option key={index + 1} value={option}>{option}</option>
@@ -131,6 +151,8 @@ function DropDownInput({name, label, options, onChange}) {
                  <option disabled selected value>Select {name}</option>
                 {optionList}
             </select>
+            {error &&
+            <ErrorMessage message={error_message} />}
         </div>
     );
 }
@@ -140,7 +162,7 @@ function SubmitButton({ onClick }) {
         <input type="submit" value="+ Add Client" disabled={false}
         data-test="submit_button" 
         onClick={onClick}
-        className="text-white text-center bg-lime-500 border-[1px] rounded-md px-2 py-1 w-max self-end mt-[68%] mr-2"/> //Disabled.
+        className="text-white text-center bg-lime-500 border-[1px] rounded-md px-2 py-1 w-max self-end mr-2"/> //Disabled.
     );
 }
 
@@ -182,10 +204,14 @@ export default function CustomerForm(/*props*/) {
                     <CheckboxInput name="services" label="Services" options={serviceOptions} />
                 </div>
                 <div className="border-2 mx-2 flex flex-col"> {/* column 2 */}
-                    <DropDownInput name="status" label="Status" options={statusOptions}/>
-                    <DropDownInput name="type" label="Type" options={typeOptions} />
-                    <TelNumInput name="contact_number" label="Contact Number" regex="^(09|\+639)\d{9}$|^(02|\+6302)\d{8}$" />
-                    <SubmitButton onClick={printInputs}/>
+                    <div className="flex flex-col  h-[90%]">
+                        <DropDownInput name="status" label="Status" options={statusOptions}/>
+                        <DropDownInput name="type" label="Type" options={typeOptions} />
+                        <TelNumInput name="contact_number" label="Contact Number" regex="^(09|\+639)\d{9}$|^(02|\+6302)\d{8}$" />
+                    </div>
+                    <div className="flex flex-col flex-end justify-end">
+                        <SubmitButton onClick={printInputs} />
+                    </div>
                 </div>
             </div>
         </div>
