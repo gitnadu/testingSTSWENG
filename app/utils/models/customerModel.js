@@ -27,6 +27,11 @@ const customerSchema = new Schema({
     required: true,
     enum: ["Completed", "Ongoing", "Terminated", "Pending"],
   },
+  services: {
+    type: [String],
+    required: true,
+    enum: ["Hygenic Pest Control", "Termite Control", "Rodent Control"],
+  },
 });
 
 const Customer =
