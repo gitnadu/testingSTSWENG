@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 function ErrorMessage({message, id}) {
     return (
-        <p id={id} data-test={`error-${id}`}
+        <p id={id} data-test={`error_${id}`}
         className="text-red-600 text-[85%] whitespace-pre-wrap mt-1">
             {message}
         </p>
