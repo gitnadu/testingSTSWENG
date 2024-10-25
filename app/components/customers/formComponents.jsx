@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-function ErrorMessage({message}) {
+function ErrorMessage({message, id}) {
     return (
-        <p className="text-red-600 text-[85%] whitespace-pre-wrap mt-1">{message}</p>
+        <p id={id} data-test={`error-${id}`}
+        className="text-red-600 text-[85%] whitespace-pre-wrap mt-1">
+            {message}
+        </p>
     );
 }
 
@@ -21,7 +24,7 @@ export function TextInput({name, label, onChange, error_msg}) {
             className={`border-[1px] ${error_msg && error_style} border-dark-green rounded-md`}
             />
             {error_msg &&
-            <ErrorMessage message={error_msg} />}
+            <ErrorMessage message={error_msg} id={name} />}
         </div>
     );
 }
@@ -42,7 +45,7 @@ export function EmailInput({name, label, onChange}) {
             onChange={onChange} 
             className={`border-[1px] ${error && error_style} border-dark-green rounded-md`}/>
             {error_msg &&
-            <ErrorMessage message={error_message} />}
+            <ErrorMessage message={error_message} id={name} />}
         </div>
     );
 }
@@ -61,7 +64,7 @@ export function TelNumInput({name, label, regex, onChange}) {
             onChange={onChange}
             className={`border-[1px] ${error && error_style} border-dark-green rounded-md`} /> {/* Using the landline and cellphone PH phone number format. */}
             {error_msg &&
-            <ErrorMessage message={error_message} />}
+            <ErrorMessage message={error_message} id={name} />}
         </div>
     );
 }
@@ -120,7 +123,7 @@ export function CheckboxInput({name, label, options, onChange, error_msg}) {
             </p>
             {optionList}
             {error_msg &&
-            <ErrorMessage message={error_msg} />}
+            <ErrorMessage message={error_msg} id={name} />}
         </div>
     );
 }
@@ -148,7 +151,7 @@ export function DropDownInput({name, label, options, onChange, error_msg}) {
                 {optionList}
             </select>
             {error_msg &&
-            <ErrorMessage message={error_msg} />}
+            <ErrorMessage message={error_msg} id={name} />}
         </div>
     );
 }
