@@ -6,12 +6,27 @@ Fields are not complete.
 */
 const customerSchema = new Schema({
   name: { type: String, required: true },
-  type: { type: String, required: true, enum: ["Public", "Private"] },
+  type: {
+    type: String,
+    required: true,
+    enum: [
+      "Industrial",
+      "Residential",
+      "Commercial",
+      "Service",
+      "Retail",
+      "Other",
+    ],
+  },
   contact_person: { type: String, required: true },
   contact_number: { type: String, required: true },
   address: { type: String, required: true },
   email_address: { type: String, required: true },
-  status: { type: String, required: true, enum: ["Ongoing"] },
+  status: {
+    type: String,
+    required: true,
+    enum: ["Completed", "Ongoing", "Terminated", "Pending"],
+  },
 });
 
 const Customer =
