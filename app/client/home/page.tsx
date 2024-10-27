@@ -17,10 +17,10 @@ export default function Home() {
           width={1220}
           height={663}
         />
-        <div className="absolute inset-0 bg-normal-green bg-opacity-50 flex flex-col items-center pt-16">
+        <div className="absolute inset-0 bg-dark-green-A bg-opacity-70 flex flex-col items-center pt-16">
           <h1 className="text-white text-[96px] font-bold mb-4 italic text-center">Keep Your Home<br></br> Safe</h1>
           <div className="flex space-x-4 text-xl">
-            <button className="btn bg-normal-green hover:bg-dark-green text-white h-[56px] w-[202px] rounded-xl border-none">BOOK NOW</button>
+            <button className="btn bg-dark-green-B hover:bg-dark-green text-white h-[56px] w-[202px] rounded-xl border-none">BOOK NOW</button>
             <button className="btn btn-outline border-normal-green hover:border-dark-green hover:bg-transparent hover:text-white text-white h-[56px] w-[202px] rounded-xl">CONTACT US</button>
           </div>
         </div>

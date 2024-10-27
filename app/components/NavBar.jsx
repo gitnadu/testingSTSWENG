@@ -42,7 +42,7 @@ const NavBar = () => {
             </Link>
           </div>
           <div className="flex items-center text-white gap-20 text-xl pr-16 h-max">
-            <Link href="/Services" className="flex items-center gap-3">
+            <Link href="/admin/customer" className="flex items-center gap-3">
               <div>Customer</div>
             </Link>
             <Link href="/client/home" className="flex items-center gap-3">
