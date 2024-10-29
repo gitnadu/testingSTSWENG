@@ -21,6 +21,10 @@ const customerSchema = new Schema({
       message: "{VALUE} is not supported.",
     },
   },
+  date: {
+    type: Date,
+    required: [true, "Date is required."],
+  },
   contact_person: {
     type: String,
     required: [true, "Contact person is required."],
