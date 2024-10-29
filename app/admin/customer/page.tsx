@@ -1,7 +1,29 @@
+'use client'
 import ClientRow from '@/app/components/admin/customerRow'
-import React from 'react'
-
+import React, { useState, useEffect } from 'react';
 const page = () => {
+  const [customers, setCustomers] = useState([]);
+  function formatDate(dateString) {
+    if (!dateString) return "N/A"; 
+    const date = new Date(dateString);
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
+  }
+
+  const handleRowClick = (customerId) => {
+    console.log('Clicked customer ID:', customerId);
+    alert('Clicked customer ID: ' + customerId)
+  };
+
+  useEffect(() => {
+    fetch('/api/customers')
+      .then((response) => response.json())
+      .then((data) => setCustomers(data.results))
+      .catch((error) => console.error('Error fetching customers:', error));
+  }, []);
+
   return (
     <div className='mx-16 mt-10 pb-6'>
         <div className='text-normal-green text-5xl italic font-bold'>Clients</div>
@@ -40,30 +62,20 @@ const page = () => {
                 <div className='flex justify-center w-11/12'>Created At</div>
             </div>
             <hr className='bg-normal-green h-[2px] w-full mt-3'></hr>
+            {customers.map((customer) => (
+          <div
+            key={customer._id}
+            className="cursor-pointer"
+            onClick={() => handleRowClick(customer._id)}
+          >
             <ClientRow
-                name="Multi-Pest Control Services"
-                type="Business"
-                status="Ongoing"
-                createdAt="08/20/2020"
+              name={customer.name}
+              type={customer.type}
+              status={customer.status}
+              createdAt={formatDate(customer.date)}
             />
-            <ClientRow
-                name="XD"
-                type="Business"
-                status="Ongoing"
-                createdAt="08/20/2020"
-            />
-            <ClientRow
-                name="Multi-Pest Control Services"
-                type="Business"
-                status="Ongoing"
-                createdAt="08/20/2020"
-            />
-            <ClientRow
-                name="Multi-Pest Control Services"
-                type="Business"
-                status="Ongoing"
-                createdAt="08/20/2020"
-            />
+          </div>
+        ))}
         </div>
         <div className='flex justify-end'>
             <button className='btn border-none hover:bg-yellow-700  font-bold text-xl w-[201px] h-14 bg-light-green text-white mt-6 rounded-md'>
