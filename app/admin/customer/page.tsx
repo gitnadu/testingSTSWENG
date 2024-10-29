@@ -1,7 +1,7 @@
 'use client'
 import ClientRow from '@/app/components/admin/customerRow'
 import React, { useState, useEffect } from 'react';
-const page = () => {
+const Page = () => {
   const [customers, setCustomers] = useState([]);
   function formatDate(dateString) {
     if (!dateString) return "N/A"; 
@@ -86,4 +86,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
