@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { TextInput, CheckboxInput, DropDownInput, SubmitButton } from "./formComponents"
 
-export default function CustomerForm(/*props*/) {
+export default function CustomerForm({changeState}) {
     const statusOptions = ["Completed", "Ongoing", "Terminated", "Pending"];
     const typeOptions = ["Industrial", "Residential", "Commercial", "Service", "Retail", "Other"];
     const serviceOptions = ["Hygenic Pest Control", "Termite Control", "Rodent Control"];
@@ -81,7 +81,7 @@ export default function CustomerForm(/*props*/) {
         });
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const new_errors = {
             client_name: "",
             contact_person: "",
@@ -133,8 +133,26 @@ export default function CustomerForm(/*props*/) {
         setErrors(new_errors);
 
         if (valid) {
-            //API
-            //Changing the form.
+            try {
+                console.log("Submitting customer form.");
+                
+                const response = await fetch(`${process.env.PUBLIC_API_URL}/api/customer`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                      },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Response status: ${response.status}`);
+                }
+                
+                console.log("Submitting customer form successful.")
+                //changeState(true); //To change the state outside to disable the modal.
+            } catch (error) {
+                console.log(`Error in submitting form: ${error}`);
+            }
         }
     }
 
