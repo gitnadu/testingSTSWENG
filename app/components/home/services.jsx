@@ -24,7 +24,7 @@ export default function OurServices() {
     if (swiperRef) swiperRef.slidePrev();
   };
   return (
-    <div className="bg-white relative py-5 px-16 flex flex-col w-full"> 
+    <div className="bg-white relative py-5 px-20 flex flex-col w-full"> 
       <h2 className="text-6xl font-semibold mb-8 text-dark-green-A italic">Our Services</h2>
       <div className="flex justify-center items-center w-full px-16">
         <button 
