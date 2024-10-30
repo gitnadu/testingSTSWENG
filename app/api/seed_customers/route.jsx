@@ -5,48 +5,58 @@ import connectDB from "../../utils/connectDB";
 const customers = [
   {
     name: "STSWENG Group 9",
-    type: "Public",
+    type: "Other",
     contact_person: "Adriel Fancubit",
-    contact_number: "0123456789",
+    contact_number: "09123456789",
     address: "Taft Manila",
     email_address: "stsweng_group_9@gmail.com",
     status: "Ongoing",
+    date: "2024-09-02",
+    services: ["Hygenic Pest Control",]
   },
   {
     name: "DLSU Laguna",
-    type: "Private",
+    type: "Service",
     contact_person: "John Baptist De La Salle",
-    contact_number: "049 554 8900",
+    contact_number: "0212345678",
     address: "Biñan City, Laguna",
     email_address: "dlsu_laguna@dlsu.edu.ph",
     status: "Ongoing",
+    date: "2022-09-02",
+    services: ["Hygenic Pest Control", "Termite Control",]
   },
   {
     name: "Multi-Pest Services Corp.",
-    type: "Private",
+    type: "Service",
     contact_person: "Norma B. Salazar",
-    contact_number: "631 9693",
+    contact_number: "0287654321",
     address: "Mandaluyong City, NCR",
     email_address: "multipest14@yahoo.com",
     status: "Ongoing",
+    date: "1972-10-23",
+    services: [ "Termite Control", "Rodent Control",]
   },
   {
     name: "Manila City Hall",
-    type: "Public",
+    type: "Other",
     contact_person: "Airelle Maagma",
-    contact_number: "9876543210",
+    contact_number: "+639876543210",
     address: "Manila, NCR",
     email_address: "manila_city_hall@gmail.com",
     status: "Ongoing",
+    date: "1980-08-10",
+    services: ["Hygenic Pest Control", "Rodent Control",]
   },
   {
     name: "Galleria Regency Condominium Corporation",
-    type: "Private",
+    type: "Residential",
     contact_person: "John Richard B. Sotelo",
-    contact_number: "982 8913 8712",
+    contact_number: "+630212345678",
     address: "Pasig city, NCR",
     email_address: "galleria_regency@gmail.com",
     status: "Ongoing",
+    date: "1990-02-20",
+    services: ["Rodent Control",]
   },
 ];
 
