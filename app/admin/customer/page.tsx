@@ -58,12 +58,12 @@ const Page = () => {
       ];
 
       filterParams = filterParams.filter(param => param !== "");
-      const urlParams = filterParams.join("&")
+      const urlStr = (filterParams.length > 0 ? "?" : "") + filterParams.join("&")
 
       console.log(filterParams);
-      console.log(urlParams);
+      console.log(urlStr);
 
-      fetch(`/api/customers/${urlParams}`)
+      fetch(`/api/customers${urlStr}`)
       .then((response) => response.json())
       .then((data) => setCustomers(data.results))
       .catch((error) => console.error('Error fetching customers:', error));
