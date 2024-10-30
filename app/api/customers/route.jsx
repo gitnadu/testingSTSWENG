@@ -36,8 +36,48 @@ export async function GET(request) {
     }
 };
 
-export async function POST() {
+export async function POST(request) {
+    try {
+        const {
+            client_name,
+            contact_person,
+            email_address,
+            address,
+            services,
+            status,
+            type,
+            contact_number
+        } = request.body;
+    
+        const currentDate = new Date()
+    
+        const new_customer = new Customer({
+            client_name,
+            type,
+            currentDate,
+            contact_person,
+            contact_number,
+            address,
+            email_address,
+            status,
+            services
+        });
+    
+        await new_customer.save();
+        
+        console.log("New customer instance saved.");
 
+        return Response.json({ 
+            message: "Creating a new customer instance successful.", 
+            status: 201 
+        });
+    } catch (error) {
+        console.log("Error: ", error);
+        return Response.json({ 
+            message: "Error occured while creating a new customer instance.", 
+            status: 500 
+        });
+    }
 }
 
 export async function PUT() {

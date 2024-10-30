@@ -136,7 +136,7 @@ export default function CustomerForm({changeState}) {
             try {
                 console.log("Submitting customer form.");
                 
-                const response = await fetch(`${process.env.PUBLIC_API_URL}/api/customer`, {
+                const response = await fetch(`${process.env.PUBLIC_API_URL}/api/customers`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
