@@ -47,20 +47,20 @@ export async function POST(request) {
             status,
             type,
             contact_number
-        } = request.body;
+        } = await request.json();
     
         const currentDate = new Date()
     
         const new_customer = new Customer({
-            client_name,
-            type,
-            currentDate,
-            contact_person,
-            contact_number,
-            address,
-            email_address,
-            status,
-            services
+            name: client_name,
+            type: type,
+            date: currentDate,
+            contact_person: contact_person,
+            contact_number: contact_number,
+            address: address,
+            email_address: email_address,
+            status: status,
+            services: services
         });
     
         await new_customer.save();

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { TextInput, CheckboxInput, DropDownInput, SubmitButton } from "./formComponents"
 
-export default function CustomerForm({changeState}) {
+export default function CustomerForm(/*{changeState}*/) {
     const statusOptions = ["Completed", "Ongoing", "Terminated", "Pending"];
     const typeOptions = ["Industrial", "Residential", "Commercial", "Service", "Retail", "Other"];
     const serviceOptions = ["Hygenic Pest Control", "Termite Control", "Rodent Control"];
@@ -136,7 +136,7 @@ export default function CustomerForm({changeState}) {
             try {
                 console.log("Submitting customer form.");
                 
-                const response = await fetch(`${process.env.PUBLIC_API_URL}/api/customers`, {
+                const response = await fetch(`/api/customers`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -157,35 +157,37 @@ export default function CustomerForm({changeState}) {
     }
 
     return (
-        <div className="flex flex-col p-5">
-            <h2 className="text-dark-green-A text-[20px] font-bold mb-1">Customer Information</h2>
-            <div className="border-2 flex flex-row">
-                <div className="border-2 mx-2 flex flex-col "> {/* column 1 */}
-                    <TextInput name="client_name" label="Client Name" onChange={handleChange} 
-                    error_msg={errors.client_name} />
-                    <TextInput name="contact_person" label="Contact Person" onChange={handleChange} 
-                    error_msg={errors.contact_person} />
-                    <TextInput name="email_address" label="Email Address" onChange={handleChange} 
-                    error_msg={errors.email_address} />
-                    <TextInput name="address" label="Address" onChange={handleChange} 
-                    error_msg={errors.address} />
-                    <CheckboxInput name="services" label="Services" options={serviceOptions} onChange={handleCheckboxChange}
-                    error_msg={errors.services} />
-                </div>
-                <div className="border-2 mx-2 flex flex-col"> {/* column 2 */}
-                    <div className="flex flex-col  h-[90%]">
-                        <DropDownInput name="status" label="Status" options={statusOptions} onChange={handleChange}
-                        error_msg={errors.status} />
-                        <DropDownInput name="type" label="Type" options={typeOptions} onChange={handleChange} 
-                        error_msg={errors.type} />
-                        <TextInput name="contact_number" label="Contact Number" onChange={handleChange} 
-                        error_msg={errors.contact_number} /> {/* Regex: ^(09|\+639)\d{9}$|^(02|\+6302)\d{8}$*/}
+        <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
+            <div className="l-[70%] h-[60%] flex flex-col p-5 bg-white rounded-xl">
+                <h2 className="text-dark-green-A text-[20px] font-bold mb-1">Customer Information</h2>
+                <div className="border-2 flex flex-row">
+                    <div className="border-2 mx-2 flex flex-col "> {/* column 1 */}
+                        <TextInput name="client_name" label="Client Name" onChange={handleChange} 
+                        error_msg={errors.client_name} />
+                        <TextInput name="contact_person" label="Contact Person" onChange={handleChange} 
+                        error_msg={errors.contact_person} />
+                        <TextInput name="email_address" label="Email Address" onChange={handleChange} 
+                        error_msg={errors.email_address} />
+                        <TextInput name="address" label="Address" onChange={handleChange} 
+                        error_msg={errors.address} />
+                        <CheckboxInput name="services" label="Services" options={serviceOptions} onChange={handleCheckboxChange}
+                        error_msg={errors.services} />
                     </div>
-                    <div className="flex flex-col flex-end justify-end">
-                        <SubmitButton onClick={() => {
-                            printInputs();
-                            handleSubmit();
-                        }} />
+                    <div className="border-2 mx-2 flex flex-col"> {/* column 2 */}
+                        <div className="flex flex-col  h-[90%]">
+                            <DropDownInput name="status" label="Status" options={statusOptions} onChange={handleChange}
+                            error_msg={errors.status} />
+                            <DropDownInput name="type" label="Type" options={typeOptions} onChange={handleChange} 
+                            error_msg={errors.type} />
+                            <TextInput name="contact_number" label="Contact Number" onChange={handleChange} 
+                            error_msg={errors.contact_number} /> {/* Regex: ^(09|\+639)\d{9}$|^(02|\+6302)\d{8}$*/}
+                        </div>
+                        <div className="flex flex-col flex-end justify-end">
+                            <SubmitButton onClick={() => {
+                                printInputs();
+                                handleSubmit();
+                            }} />
+                        </div>
                     </div>
                 </div>
             </div>

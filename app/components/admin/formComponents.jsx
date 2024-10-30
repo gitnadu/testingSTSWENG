@@ -17,7 +17,7 @@ export function TextInput({name, label, onChange, error_msg}) {
             <label for={name} 
             className="text-dark-green-A">
                 {label}
-            </label>
+            </label><br />
             <input type="text" id={name} name={name} 
             data-test={`input_${name}`}
             onChange={onChange}

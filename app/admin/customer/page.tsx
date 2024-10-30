@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 import ClientRow from '@/app/components/admin/customerRow'
+import CustomerForm from '@/app/components/admin/customerForm'
 import React, { useState, useEffect } from 'react';
+
 const Page = () => {
   const typeOptions = ["Industrial", "Residential", "Commercial", "Service", "Retail", "Other"];
   const statusOptions = ["Completed", "Ongoing", "Terminated", "Pending"];
@@ -26,10 +28,6 @@ const Page = () => {
     console.log(typeFilter);
     console.log(statusFilter);
     console.log(dateFilter);
-  }
-
-  const handleFilter = () => {
-
   }
 
   function formatDate(dateString) {
@@ -74,6 +72,7 @@ const Page = () => {
 
   return (
     <div className='mx-16 mt-10 pb-6'>
+        <CustomerForm />
         <div className='text-normal-green text-5xl italic font-bold'>Clients</div>
         <div className='flex items-center space-x-4 mt-5'>
         <svg width="22" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
