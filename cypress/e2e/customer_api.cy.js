@@ -1,3 +1,5 @@
+import moment from "moment";
+
 describe("Customer API test", () => {
   context("Gets a list of customers", () => {
     it("No filters.", () => {
@@ -46,7 +48,22 @@ describe("Customer API test", () => {
       });
     });
 
-    //it("Only date filtered.", () => {});
+    it("Only date filtered.", () => {
+      const expectedDate = moment(new Date("1980-08-10")).format("YYYY-MM-DD");
+
+      cy.request(
+        "GET",
+        "http://localhost:3000/api/customers?date=1980-08-10"
+      ).then((response) => {
+        expect(response.status).to.eq(200);
+
+        for (const result of response.body.results) {
+          expect(moment(result.date).format("YYYY-MM-DD")).to.equal(
+            expectedDate
+          );
+        }
+      });
+    });
 
     it("All fillers", () => {
       cy.request(
