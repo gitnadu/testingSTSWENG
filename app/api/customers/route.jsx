@@ -1,6 +1,6 @@
 import Customer from "../../utils/models/customerModel";
 import connectDB from "../../utils/connectDB";
-
+import moment from "moment";
 
 export async function GET(request) {
     try {
@@ -22,7 +22,14 @@ export async function GET(request) {
         };
         if (type) query.type = type;
         if (status) query.status = status;
-        if (date) query.date = date;
+        if (date) {
+            const dateWrapper = moment(date);
+
+            query.date = {
+                $gte: dateWrapper.toDate(), 
+                $lt: moment(dateWrapper).endOf('day').toDate(),
+            };
+        }
 
         await connectDB();
         const results = await Customer.find(query).exec();
