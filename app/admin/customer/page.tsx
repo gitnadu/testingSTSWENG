@@ -83,7 +83,8 @@ const Page = () => {
         <rect x="10" y="15" width="4" height="2" fill="#8A9E79"/>
         </svg>
         <div className='flex items-center border border-normal-green rounded-md px-3 py-2 hover:border-green-700 hover:shadow-lg focus-within:border-green-700'>
-            <input type="text" placeholder="Search" className='text-normal-green w-[236px] outline-none bg-white' 
+            <input type="text" placeholder="Search" 
+            className='border-0 focus:ring-0 focus:ring-offset-0 text-normal-green w-[236px] outline-none bg-white' 
             onChange={(e) => {
               e.stopPropagation();
               setNameFilter(e.target.value);
