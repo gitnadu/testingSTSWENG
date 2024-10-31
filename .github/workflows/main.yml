@@ -4,14 +4,10 @@ on:
   push:
     branches:
       - main
-      - 'feature/*'
-      - 'user-story/*'
       - 'sprint/*'
   pull_request:
     branches:
       - main
-      - 'feature/*'
-      - 'user-story/*'
       - 'sprint/*'
 jobs:
   build:
