@@ -23,6 +23,8 @@ const Page = () => {
   const [fetching, setFetching] = useState(true);
   const [customers, setCustomers] = useState([]);
 
+  const [modalOpen, setModalOpen] = useState(false);
+
   const printFilters = () => {
     console.log(nameFilter);
     console.log(typeFilter);
@@ -72,7 +74,7 @@ const Page = () => {
 
   return (
     <div className='mx-16 mt-10 pb-6'>
-        <CustomerForm />
+        {modalOpen && <CustomerForm />}
         <div className='text-normal-green text-5xl italic font-bold'>Clients</div>
         <div className='flex items-center space-x-4 mt-5'>
         <svg width="22" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -152,7 +154,8 @@ const Page = () => {
         </div>
         <div className='flex justify-end'>
             <button 
-            className='btn border-none hover:bg-yellow-700  font-bold text-xl w-[201px] h-14 bg-light-green text-white mt-6 rounded-md'>
+            className='btn border-none hover:bg-yellow-700  font-bold text-xl w-[201px] h-14 bg-light-green text-white mt-6 rounded-md'
+            onClick={() => setModalOpen(true)}>
                 + Add Client
             </button>
         </div>
