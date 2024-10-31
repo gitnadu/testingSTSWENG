@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 import ClientRow from '@/app/components/admin/customerRow'
+import CustomerForm from '@/app/components/admin/customerForm'
 import React, { useState, useEffect } from 'react';
+
 const Page = () => {
   const typeOptions = ["Industrial", "Residential", "Commercial", "Service", "Retail", "Other"];
   const statusOptions = ["Completed", "Ongoing", "Terminated", "Pending"];
@@ -21,15 +23,13 @@ const Page = () => {
   const [fetching, setFetching] = useState(true);
   const [customers, setCustomers] = useState([]);
 
+  const [modalOpen, setModalOpen] = useState(false);
+
   const printFilters = () => {
     console.log(nameFilter);
     console.log(typeFilter);
     console.log(statusFilter);
     console.log(dateFilter);
-  }
-
-  const handleFilter = () => {
-
   }
 
   function formatDate(dateString) {
@@ -74,6 +74,7 @@ const Page = () => {
 
   return (
     <div className='mx-16 mt-10 pb-6'>
+        {modalOpen && <CustomerForm onOpenModel={setModalOpen} onFetchCustomerData={setFetching} />}
         <div className='text-normal-green text-5xl italic font-bold'>Clients</div>
         <div className='flex items-center space-x-4 mt-5'>
         <svg width="22" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,7 +83,8 @@ const Page = () => {
         <rect x="10" y="15" width="4" height="2" fill="#8A9E79"/>
         </svg>
         <div className='flex items-center border border-normal-green rounded-md px-3 py-2 hover:border-green-700 hover:shadow-lg focus-within:border-green-700'>
-            <input type="text" placeholder="Search" className='text-normal-green w-[236px] outline-none bg-white' 
+            <input type="text" placeholder="Search" 
+            className='border-0 focus:ring-0 focus:ring-offset-0 text-normal-green w-[236px] outline-none bg-white' 
             onChange={(e) => {
               e.stopPropagation();
               setNameFilter(e.target.value);
@@ -153,7 +155,8 @@ const Page = () => {
         </div>
         <div className='flex justify-end'>
             <button 
-            className='btn border-none hover:bg-yellow-700  font-bold text-xl w-[201px] h-14 bg-light-green text-white mt-6 rounded-md'>
+            className='btn border-none hover:bg-yellow-700  font-bold text-xl w-[201px] h-14 bg-light-green text-white mt-6 rounded-md'
+            onClick={() => setModalOpen(true)}>
                 + Add Client
             </button>
         </div>

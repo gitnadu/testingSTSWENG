@@ -1,6 +1,6 @@
 import Customer from "../../utils/models/customerModel";
 import connectDB from "../../utils/connectDB";
-
+import moment from "moment";
 
 export async function GET(request) {
     try {
@@ -22,7 +22,14 @@ export async function GET(request) {
         };
         if (type) query.type = type;
         if (status) query.status = status;
-        if (date) query.date = date;
+        if (date) {
+            const dateWrapper = moment(date);
+
+            query.date = {
+                $gte: dateWrapper.toDate(), 
+                $lt: moment(dateWrapper).endOf('day').toDate(),
+            };
+        }
 
         await connectDB();
         const results = await Customer.find(query).exec();
@@ -36,8 +43,48 @@ export async function GET(request) {
     }
 };
 
-export async function POST() {
+export async function POST(request) {
+    try {
+        const {
+            client_name,
+            contact_person,
+            email_address,
+            address,
+            services,
+            status,
+            type,
+            contact_number
+        } = await request.json();
+    
+        const currentDate = new Date()
+    
+        const new_customer = new Customer({
+            name: client_name,
+            type: type,
+            date: currentDate,
+            contact_person: contact_person,
+            contact_number: contact_number,
+            address: address,
+            email_address: email_address,
+            status: status,
+            services: services
+        });
+    
+        await new_customer.save();
+        
+        console.log("New customer instance saved.");
 
+        return Response.json({ 
+            message: "Creating a new customer instance successful.", 
+            status: 201 
+        });
+    } catch (error) {
+        console.log("Error: ", error);
+        return Response.json({ 
+            message: "Error occured while creating a new customer instance.", 
+            status: 500 
+        });
+    }
 }
 
 export async function PUT() {
