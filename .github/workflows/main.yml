@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - main
-      - 'sprint/*'
+      - sprint*
   pull_request:
     branches:
       - main
-      - 'sprint/*'
+      - sprint*
 jobs:
   build:
     runs-on: ubuntu-latest
