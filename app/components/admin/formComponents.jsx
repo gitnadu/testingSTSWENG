@@ -161,6 +161,7 @@ export function SubmitButton({ onClick }) {
         <input type="submit" value="+ Add Client" disabled={false}
         data-test="submit_button" 
         onClick={onClick}
-        className="text-white text-center bg-lime-500 border-[1px] rounded-md px-2 py-1 w-max self-end mr-2 w-[38%]"/> //Disabled.
+        className="btn text-white text-center bg-lime-500 border-[1px] rounded-md px-2 py-1 w-max self-end mr-2
+        hover:bg-yellow-700"/>
     );
 }

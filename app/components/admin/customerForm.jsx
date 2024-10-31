@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { TextInput, CheckboxInput, DropDownInput, SubmitButton } from "./formComponents"
 
-export default function CustomerForm(/*{changeState}*/) {
+export default function CustomerForm({onOpenModel, onFetchCustomerData}) {
     const statusOptions = ["Completed", "Ongoing", "Terminated", "Pending"];
     const typeOptions = ["Industrial", "Residential", "Commercial", "Service", "Retail", "Other"];
     const serviceOptions = ["Hygenic Pest Control", "Termite Control", "Rodent Control"];
@@ -149,7 +149,8 @@ export default function CustomerForm(/*{changeState}*/) {
                 }
                 
                 console.log("Submitting customer form successful.")
-                //changeState(true); //To change the state outside to disable the modal.
+                onOpenModel(false); //To change the state outside to disable the modal.
+                onFetchCustomerData(true);
             } catch (error) {
                 console.log(`Error in submitting form: ${error}`);
             }
@@ -159,7 +160,14 @@ export default function CustomerForm(/*{changeState}*/) {
     return (
         <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
             <div className="flex flex-col p-5 bg-white mt-[6.5%] w-[47%] flex-shrink-0 rounded-xl">
-                <h2 className="text-dark-green-A text-[20px] font-bold mb-1">Customer Information</h2>
+                <div className="flex justify-between">
+                    <h2 className="text-dark-green-A text-[20px] font-bold mb-1 self-center">Customer Information</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 -960 960 960"
+                    className="w-6 h-6 text-dark-green-A fill-current mt-[0.3%]"
+                    onClick={() => onOpenModel(false)}>
+                        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                    </svg>
+                </div>
                 <div className="flex flex-row justify-center px-4">
                     <div className="mx-2 flex flex-col flex-shrink-0 basis-[50%]"> {/* column 1 */}
                         <TextInput name="client_name" label="Client Name" onChange={handleChange} 

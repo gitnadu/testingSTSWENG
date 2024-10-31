@@ -74,7 +74,7 @@ const Page = () => {
 
   return (
     <div className='mx-16 mt-10 pb-6'>
-        {modalOpen && <CustomerForm />}
+        {modalOpen && <CustomerForm onOpenModel={setModalOpen} onFetchCustomerData={setFetching} />}
         <div className='text-normal-green text-5xl italic font-bold'>Clients</div>
         <div className='flex items-center space-x-4 mt-5'>
         <svg width="22" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
