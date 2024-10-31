@@ -158,10 +158,10 @@ export default function CustomerForm(/*{changeState}*/) {
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
-            <div className="l-[70%] h-[60%] flex flex-col p-5 bg-white rounded-xl">
+            <div className="flex flex-col p-5 bg-white mt-[6.5%] w-[47%] flex-shrink-0 rounded-xl">
                 <h2 className="text-dark-green-A text-[20px] font-bold mb-1">Customer Information</h2>
-                <div className="border-2 flex flex-row">
-                    <div className="border-2 mx-2 flex flex-col "> {/* column 1 */}
+                <div className="flex flex-row justify-center px-4">
+                    <div className="mx-2 flex flex-col flex-shrink-0 basis-[50%]"> {/* column 1 */}
                         <TextInput name="client_name" label="Client Name" onChange={handleChange} 
                         error_msg={errors.client_name} />
                         <TextInput name="contact_person" label="Contact Person" onChange={handleChange} 
@@ -173,8 +173,8 @@ export default function CustomerForm(/*{changeState}*/) {
                         <CheckboxInput name="services" label="Services" options={serviceOptions} onChange={handleCheckboxChange}
                         error_msg={errors.services} />
                     </div>
-                    <div className="border-2 mx-2 flex flex-col"> {/* column 2 */}
-                        <div className="flex flex-col  h-[90%]">
+                    <div className="mx-2 flex flex-col flex-shrink-0 basis-[50%]"> {/* column 2 */}
+                        <div className="flex flex-col h-[90%]">
                             <DropDownInput name="status" label="Status" options={statusOptions} onChange={handleChange}
                             error_msg={errors.status} />
                             <DropDownInput name="type" label="Type" options={typeOptions} onChange={handleChange} 

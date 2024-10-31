@@ -21,7 +21,7 @@ export function TextInput({name, label, onChange, error_msg}) {
             <input type="text" id={name} name={name} 
             data-test={`input_${name}`}
             onChange={onChange}
-            className={`border-[1px] ${error_msg && error_style} border-dark-green rounded-md`}
+            className={`border-[1px] ${error_msg && error_style} border-dark-green rounded-md w-[95%]`}
             />
             {error_msg &&
             <ErrorMessage message={error_msg} id={name} />}
@@ -43,7 +43,7 @@ export function EmailInput({name, label, onChange}) {
             <input type="email" id={name} name={name}
             data-test={`input_${name}`}
             onChange={onChange} 
-            className={`border-[1px] ${error && error_style} border-dark-green rounded-md`}/>
+            className={`border-[1px] ${error && error_style} border-dark-green rounded-md w-[95%]`}/>
             {error_msg &&
             <ErrorMessage message={error_message} id={name} />}
         </div>
@@ -62,7 +62,7 @@ export function TelNumInput({name, label, regex, onChange}) {
             <input type="tel" id={name} name={label} pattern={regex} 
             data-test={`input_${name}`}
             onChange={onChange}
-            className={`border-[1px] ${error && error_style} border-dark-green rounded-md`} /> {/* Using the landline and cellphone PH phone number format. */}
+            className={`border-[1px] ${error && error_style} border-dark-green rounded-md w-[95%]`} /> {/* Using the landline and cellphone PH phone number format. */}
             {error_msg &&
             <ErrorMessage message={error_message} id={name} />}
         </div>
@@ -146,7 +146,7 @@ export function DropDownInput({name, label, options, onChange, error_msg}) {
             <select name={name} id={name}
             data-test={`input_${name}`}
             onChange={onChange}
-            className={`border-[1px] ${error_msg && error_style} border-dark-green rounded-md`}>
+            className={`border-[1px] ${error_msg && error_style} border-dark-green rounded-md w-[50%]`}>
                  <option disabled selected value>Select {name}</option>
                 {optionList}
             </select>
@@ -161,6 +161,6 @@ export function SubmitButton({ onClick }) {
         <input type="submit" value="+ Add Client" disabled={false}
         data-test="submit_button" 
         onClick={onClick}
-        className="text-white text-center bg-lime-500 border-[1px] rounded-md px-2 py-1 w-max self-end mr-2"/> //Disabled.
+        className="text-white text-center bg-lime-500 border-[1px] rounded-md px-2 py-1 w-max self-end mr-2 w-[38%]"/> //Disabled.
     );
 }
