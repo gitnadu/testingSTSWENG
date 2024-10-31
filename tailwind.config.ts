@@ -1,3 +1,4 @@
+import tailwindforms from "@tailwindcss/forms"
 import daisyui from "daisyui";
 import type { Config } from "tailwindcss";
 
@@ -17,10 +18,11 @@ const config: Config = {
         'flesh': "#E6DCCD",
         'off-white': "#F9F5F0",
         'dark-green-B': "#5E8453FC",
+        'dark-green-C': "#95A38F",
         'light-green-A': "#E5F9DD",
       },
     },
   },
-  plugins: [daisyui],
+  plugins: [daisyui, tailwindforms],
 };
 export default config;

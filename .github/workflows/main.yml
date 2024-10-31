@@ -1,0 +1,27 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      -main
+      -'feature/*'
+      -'user-story/*'
+      -'sprint/*'
+  pull_request:
+    branches:
+      -main
+      -'feature/*'
+      -'user-story/*'
+      -'sprint/*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm install
+      - name: Build the application
+        run: npm run build

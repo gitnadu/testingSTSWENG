@@ -8,3 +8,8 @@
     text-wrap: balance;
   }
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(50%) sepia(50%) saturate(350%) hue-rotate(80deg) brightness(90%) contrast(85%);
+  cursor: pointer;
+}
