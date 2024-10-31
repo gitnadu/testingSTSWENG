@@ -3,16 +3,16 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      -main
-      -'feature/*'
-      -'user-story/*'
-      -'sprint/*'
+      - main
+      - 'feature/*'
+      - 'user-story/*'
+      - 'sprint/*'
   pull_request:
     branches:
-      -main
-      -'feature/*'
-      -'user-story/*'
-      -'sprint/*'
+      - main
+      - 'feature/*'
+      - 'user-story/*'
+      - 'sprint/*'
 jobs:
   build:
     runs-on: ubuntu-latest
